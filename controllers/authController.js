@@ -44,7 +44,7 @@ function showRegister(req, res) {
 }
 
 async function register(req, res) {
-    const { username, password, confirm } = req.body;
+    const { username, password, confirmPassword } = req.body;
 
 
     const user = db.prepare(`
@@ -55,7 +55,7 @@ async function register(req, res) {
         return res.status(401).send("Invalid credentials, user already exists")
     }
 
-    if (password !== confirm) {
+    if (password !== confirmPassword) {
         return res.status(401).send("Invalid credential, password must be equals to confirm")
     }
 
