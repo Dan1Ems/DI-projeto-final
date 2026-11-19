@@ -2,14 +2,6 @@ const path = require("path");
 const db = require(path.join(__dirname, "..", "database", "database.js"));
 const bcrypt = require("bcryptjs");
 
-function requireAuth(req, res, next) {
-    if (!req.session.userId) {
-        return res.redirect("/auth/login");
-    }
-
-    next();
-}
-
 function showLogin(req, res) {
     res.sendFile(path.join(__dirname, "..", "views", "login.html"));
 }
@@ -45,18 +37,26 @@ function showRegister(req, res) {
 
 async function register(req, res) {
     const { username, password, confirmPassword } = req.body;
-
+    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{8,20}$/;
 
     const user = db.prepare(`
         SelECT * FROM users WHERE username = ?
     `).get(username);
 
     if (user) {
-        return res.status(401).send("Invalid credentials, user already exists")
+        return res.status(401).send("Invalid credentials, user already exists");
+    }
+
+    if (!username) {
+        return res.status(401).send("invalid crendetials, mut provide username");
+    }
+
+    if (!passwordRegex.test(password)) {
+        return res.status(401).send("Invalid credentials, your password must be 8 - 20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.");
     }
 
     if (password !== confirmPassword) {
-        return res.status(401).send("Invalid credential, password must be equals to confirm")
+        return res.status(401).send("Invalid credentials, password must be equals to confirm");
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -68,14 +68,10 @@ async function register(req, res) {
     res.redirect("/auth/login");
 }
 
-function showProfile(req, res) {
-    res.sendFile(path.join(__dirname, "..", "views", "index.html"))
-}
-
 function logout(req, res) {
     req.session.destroy((err) => {
         if (err) {
-            return res.status(500).send("Could not logout")
+            return res.status(500).send("Could not logout");
         }
 
         res.clearCookie("connect.sid");
@@ -84,11 +80,9 @@ function logout(req, res) {
 }
 
 module.exports = {
-    requireAuth,
     showLogin,
     login,
     showRegister,
     register,
-    showProfile,
     logout
 };

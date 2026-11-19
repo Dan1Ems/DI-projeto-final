@@ -1,4 +1,5 @@
 require("dotenv").config();
+const path = require("path");
 const express = require("express");
 const session = require("express-session");
 
@@ -22,13 +23,15 @@ app.use(session({
 
 }))
 
-const authRoutes = require("./routes/authRoutes");
+const authRoutes = require(path.join(__dirname, "routes", "authRoutes.js"));
+const profileRoutes = require(path.join(__dirname, "routes", "profileRoutes.js"));
+const notesRoutes = require(path.join(__dirname, "routes", "notesRoutes.js"));
+const homeRoutes = require(path.join(__dirname, "routes", "homeRoutes.js"));
 
 app.use("/auth", authRoutes);
-
-app.get("/", (req, res) => {
-    res.redirect("/auth/login");
-});
+app.use("/profile", profileRoutes);
+app.use("/notes", notesRoutes);
+app.use(homeRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is runnig at http://localhost:${PORT}`);

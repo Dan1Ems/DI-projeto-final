@@ -5,10 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
 
+    <script src="/js/icons.js"></script>
+    <script src="/js/navigation.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link href="../public/css/style.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="/css/style.css" rel="stylesheet">
 </head>
-<body>
-    
+<body class="bg-[#E8DCC5]">
+    <div class="flex min-h-screen">
+        <aside class="w-56 bg-[#D6C3A5] rounded-r-xl">
+            <div class="mb-1 ps-2 p-2">
+                <button class="w-10 h-10 text-[#6B513B] flex justify-center items-center cursor-pointer rounded-md hover:bg-[#B89B72]"><i data-lucide="panel-left-open"></i></button>
+            </div>
+
+            <nav class="flex flex-col gap-2 items-center">
+                <button data-page="home" class="sidebar-btn cursor-pointer"><i data-lucide="house" class="me-1"></i>Home</button>
+                <button data-page="notes" class="sidebar-btn cursor-pointer"><i data-lucide="notebook-pen" class="me-1"></i>Notes</button>
+                <button data-page="profile" class="sidebar-btn cursor-pointer"><i data-lucide="user" class="me-1"></i>Profile</button>
+            </nav>
+        </aside>
+
+        <main id="main-content" class="flex-1 p-3">
+        </main>
+    </div>
 </body>
 </html>
