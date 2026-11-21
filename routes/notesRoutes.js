@@ -9,6 +9,10 @@ router.get("/",
     requireAuth,
     notesController.showNotes
 );
+router.get("/show/:id",
+    requireAuth,
+    notesController.showNote
+);
 router.post("/create",
     requireAuth,
     notesController.createNote

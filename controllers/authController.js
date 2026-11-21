@@ -28,7 +28,7 @@ async function login(req, res) {
 
     req.session.userId = user.id;
 
-    res.redirect("/");
+    res.redirect("/home/index");
 }
 
 function showRegister(req, res) {

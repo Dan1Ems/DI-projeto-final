@@ -27,11 +27,17 @@ const authRoutes = require(path.join(__dirname, "routes", "authRoutes.js"));
 const profileRoutes = require(path.join(__dirname, "routes", "profileRoutes.js"));
 const notesRoutes = require(path.join(__dirname, "routes", "notesRoutes.js"));
 const homeRoutes = require(path.join(__dirname, "routes", "homeRoutes.js"));
+const notesApiRoutes = require(path.join(__dirname, "routes", "api", "notesApiRoutes.js"));
 
 app.use("/auth", authRoutes);
 app.use("/profile", profileRoutes);
 app.use("/notes", notesRoutes);
-app.use(homeRoutes);
+app.use("/home", homeRoutes);
+app.use("/api/notes", notesApiRoutes);
+
+app.use("/", () => {
+    redirect("/auth/login");
+});
 
 app.listen(PORT, () => {
     console.log(`Server is runnig at http://localhost:${PORT}`);

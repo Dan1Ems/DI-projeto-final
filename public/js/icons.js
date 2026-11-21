@@ -1,3 +1,1 @@
-document.addEventListener("DOMContentLoaded", function() {
-    lucide.createIcons();
-});
+lucide.createIcons();

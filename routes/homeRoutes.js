@@ -5,9 +5,13 @@ const router = express.Router();
 const requireAuth = require(path.join(__dirname, "..", "middleware", "authMiddleware"));
 const homeController = require(path.join(__dirname, "..", "controllers", "homeController.js"));
 
+router.get("/index",
+    requireAuth,
+    homeController.showIndex
+);
 router.get("/",
     requireAuth,
-    homeController.showHome
+    homeController.showHome,
 );
 
 module.exports = router;
