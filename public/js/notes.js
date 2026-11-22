@@ -1,6 +1,6 @@
-async function loadNotes() {
+async function loadNotes(url) {
     try {
-        const response = await fetch("/api/notes/home");
+        const response = await fetch(`${url}`);
 
         if (!response.ok) {
             throw new Error("Could not retrieve notes")
@@ -16,12 +16,10 @@ async function loadNotes() {
             return;
         }
 
-        notes.forEach(note => {
+        notes.reverse().forEach(note => {
             const clone = notesTemplate.content.cloneNode(true);
 
             const div = clone.querySelector(".note-card");
-
-            console.log(clone.querySelector(".note-title"));
 
             clone.querySelector(".note-title-text").textContent = note.title;
 

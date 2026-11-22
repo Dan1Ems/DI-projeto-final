@@ -28,12 +28,14 @@ const profileRoutes = require(path.join(__dirname, "routes", "profileRoutes.js")
 const notesRoutes = require(path.join(__dirname, "routes", "notesRoutes.js"));
 const homeRoutes = require(path.join(__dirname, "routes", "homeRoutes.js"));
 const notesApiRoutes = require(path.join(__dirname, "routes", "api", "notesApiRoutes.js"));
+const profileApiRoutes = require(path.join(__dirname, "routes", "api", "profileApiRoutes.js"));
 
 app.use("/auth", authRoutes);
 app.use("/profile", profileRoutes);
 app.use("/notes", notesRoutes);
 app.use("/home", homeRoutes);
 app.use("/api/notes", notesApiRoutes);
+app.use("/api/profile", profileApiRoutes);
 
 app.use("/", () => {
     redirect("/auth/login");

@@ -1,7 +1,5 @@
 async function loadNote(noteId) {
     try {
-        console.log("Loading note ID:", noteId);
-
         const response = await fetch(`/api/notes/${noteId}`);
 
         if (!response.ok) {

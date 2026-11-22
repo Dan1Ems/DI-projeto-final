@@ -9,11 +9,11 @@ router.get("/",
     requireAuth,
     notesController.getNotes
 )
-router.get("/home",
+router.get("/others",
     requireAuth,
     notesController.getOtherNotes
 );
-router.get("/notes",
+router.get("/mynotes",
     requireAuth,
     notesController.getMyNotes
 );

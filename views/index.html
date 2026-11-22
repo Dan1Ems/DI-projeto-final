@@ -14,7 +14,8 @@
     <script defer src="/js/navigation.js"></script>
     <script defer src="/js/sidebar_transition.js"></script>
     <script defer src="/js/notes.js"></script>
-    <script defer src="/js/note.js" defer></script>
+    <script defer src="/js/note.js"></script>
+    <script defer src="/js/profile.js"></script>
 </head>
 <body class="bg-[#E8DCC5]">
     <div class="flex min-h-screen">
@@ -23,7 +24,7 @@
                 <button id="sidebar-button" class="w-10 h-10 shrink-0 text-[#6B513B] flex justify-center items-center cursor-pointer rounded-md hover:bg-[#B89B72]">
                     <i id="sidebar-icon" data-lucide="panel-left-open"></i>
                 </button>
-                <p class="ms-2 mt-1 sidebar-title text-xl">Danm Notes</p>
+                <p class="ms-2 mt-1 sidebar-title text-xl text-[#6B513B]">Danm Notes</p>
             </div>
 
             <nav class="flex flex-col gap-2 items-center">
@@ -38,6 +39,10 @@
                 <button data-page="/profile" class="sidebar-btn cursor-pointer">
                     <i data-lucide="user" class="me-1"></i>
                     <span class="sidebar-text">Profile</span>
+                </button>
+                <button data-page="/requirements" class="sidebar-btn cursor-pointer">
+                    <i data-lucide="user" class="me-1"></i>
+                    <span class="sidebar-text">Requirements</span>
                 </button>
             </nav>
         </aside>

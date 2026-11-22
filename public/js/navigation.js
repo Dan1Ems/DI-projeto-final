@@ -15,7 +15,12 @@ async function loadPage(url, noteId = null) {
         if (noteId !== null) {
             await loadNote(noteId);
         } else if (url === "/home") {
-            await loadNotes();
+            await loadNotes("/api/notes/others");
+        } else if (url === "/notes") {
+            await loadNotes("/api/notes/mynotes");
+        } else if (url === "/profile") {
+            await loadNotes("/api/notes/mynotes");
+            await loadProfile();
         }
 
     } catch (error) {
