@@ -23,6 +23,8 @@ async function loadPage(url, noteId = null) {
         } else if (url === "/profile") {
             await loadNotes("/api/notes/mynotes");
             await loadProfile();
+        } else if (url === "/requirements") {
+            showImages();
         }
 
     } catch (error) {
