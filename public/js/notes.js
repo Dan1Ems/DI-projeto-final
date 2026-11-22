@@ -35,10 +35,31 @@ async function loadNotes(url) {
             }
 
             if (deleteButton) {
-                deleteButton.addEventListener("click", (event) => {
+                deleteButton.addEventListener("click", async (event) => {
                     event.stopPropagation();
-                    // Later
+
+                    const confirmation = confirm(`Are you sure you want to delete "${note.title}"?`);
+
+                    if (!confirmation) {
+                        return;
+                    }
+
+                    try {
+                        const response = await fetch(`/api/notes/${note.id}`, {
+                            method: "DELETE"
+                        });
+
+                        if (!response.ok) {
+                            throw new Error("Could not delete note");
+                        }
+
+                        await loadNotes(url);
+
+                    } catch (error) {
+                        console.error(error);
+                    }
                 });
+
             }
 
             div.addEventListener("click", () => {
@@ -99,4 +120,8 @@ function initializeEditForm() {
     cancelButton.addEventListener("click", () => {
         document.querySelector("#edit-note-modal").classList.add("hidden");
     });
+}
+
+function deleteNote() {
+
 }

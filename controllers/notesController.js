@@ -69,6 +69,24 @@ function updateNote(req, res) {
     res.json({ message: "Note updated successfully" });
 }
 
+function deleteNote(req, res) {
+    const noteId = req.params.id;
+
+    const result = db.prepare(`
+        DELETE FROM notes
+        WHERE id = ? AND user_id = ?
+    `).run(noteId, req.session.userId);
+
+    if (result.changes === 0) {
+        return res.status(404).json({
+            error: "Note not found or you don't own it"
+        });
+    }
+
+    res.json({ message: "Note deleted successfully" });
+}
+
+
 module.exports = {
     showNotes,
     showNote,
@@ -77,5 +95,6 @@ module.exports = {
     getMyNotes,
     getOtherNotes,
     getNote,
-    updateNote
+    updateNote,
+    deleteNote
 }

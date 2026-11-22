@@ -25,5 +25,9 @@ router.put("/:id",
     requireAuth,
     notesController.updateNote
 );
+router.delete("/:id",
+    requireAuth,
+    notesController.deleteNote
+);
 
 module.exports = router;
