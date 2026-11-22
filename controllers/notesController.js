@@ -10,7 +10,23 @@ function showNote(req, res) {
 }
 
 function createNote(req, res) {
-    
+    const { title, text } = req.body;
+
+    if (!title || !text) {
+        return res.status(400).json({
+            error: "Title and content are required"
+        });
+    }
+
+    const result = db.prepare(`
+        INSERT INTO notes (title, text, user_id)
+        VALUES (?, ?, ?)
+    `).run(title, text, req.session.userId);
+
+    res.status(201).json({
+        message: "Note created successfully",
+        noteId: result.lastInsertRowid
+    });
 }
 
 function getNotes(req, res) {

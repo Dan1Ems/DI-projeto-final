@@ -21,10 +21,17 @@ router.get("/:id",
     requireAuth,
     notesController.getNote
 );
+
+router.post("/",
+    requireAuth,
+    notesController.createNote
+);
+
 router.put("/:id",
     requireAuth,
     notesController.updateNote
 );
+
 router.delete("/:id",
     requireAuth,
     notesController.deleteNote
