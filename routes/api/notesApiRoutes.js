@@ -21,5 +21,9 @@ router.get("/:id",
     requireAuth,
     notesController.getNote
 );
+router.put("/:id",
+    requireAuth,
+    notesController.updateNote
+);
 
 module.exports = router;

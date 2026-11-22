@@ -17,6 +17,7 @@ async function loadPage(url, noteId = null) {
         } else if (url === "/home") {
             await loadNotes("/api/notes/others");
         } else if (url === "/notes") {
+            initializeEditForm();
             await loadNotes("/api/notes/mynotes");
         } else if (url === "/profile") {
             await loadNotes("/api/notes/mynotes");

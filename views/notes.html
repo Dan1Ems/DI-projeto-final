@@ -7,15 +7,44 @@
                 <span class="note-title-text text-[#6B513B]"></span>
             </button>
 
-            <button class="note-btn-update">
+            <button type="button" class="note-btn-update">
                 <span>UPDATE</span>
             </button>
 
-            <button class="note-btn-delete">
+            <button type="button" class="note-btn-delete">
                 <span>DELETE</span>
             </button>
         </div>
     </template>
 
     <div id="notes-container"></div>
+
+    <div id="edit-note-modal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center">
+        <form id="edit-note-form" class="bg-[#E8DCC5] p-6 rounded-md w-11/12 max-w-lg">
+            <h2 class="text-2xl font-bold text-[#6B513B] mb-4">Edit Note</h2>
+
+            <input type="hidden" id="edit-note-id">
+
+            <label for="edit-note-title">Title</label>
+            <input id="edit-note-title" type="text" required
+                class="w-full p-2 mb-4 rounded border border-[#6B513B]">
+
+            <label for="edit-note-text">Content</label>
+            <textarea id="edit-note-text" required
+                class="w-full p-2 mb-4 rounded border border-[#6B513B]"></textarea>
+
+            <div class="flex justify-end gap-2">
+                <button type="button" id="cancel-edit"
+                    class="px-4 py-2 rounded border border-[#6B513B]">
+                    CANCEL
+                </button>
+
+                <button type="submit"
+                    class="px-4 py-2 rounded bg-[#6B513B] text-[#E8DCC5]">
+                    SAVE
+                </button>
+            </div>
+        </form>
+    </div>
+
 </section>

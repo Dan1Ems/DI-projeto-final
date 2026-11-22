@@ -52,6 +52,23 @@ function getNote(req, res) {
     res.json(note);
 }
 
+function updateNote(req, res) {
+    const noteId = req.params.id;
+    const { title, text } = req.body;
+
+    const result = db.prepare(`
+        UPDATE notes
+        SET title = ?, text = ?
+        WHERE id = ? AND user_id = ?
+    `).run(title, text, noteId, req.session.userId);
+
+    if (result.changes === 0) {
+        return res.status(404).send("Note not found or you don't own it");
+    }
+
+    res.json({ message: "Note updated successfully" });
+}
+
 module.exports = {
     showNotes,
     showNote,
@@ -59,5 +76,6 @@ module.exports = {
     getNotes,
     getMyNotes,
     getOtherNotes,
-    getNote
+    getNote,
+    updateNote
 }
