@@ -6,6 +6,9 @@
     <title>Home</title>
 
     <link href="/css/style.css" rel="stylesheet">
+    <style type="text/tailwindcss">
+        @custom-variant dark (&:where(.dark, .dark *));
+    </style>
 
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -17,38 +20,47 @@
     <script defer src="/js/note.js"></script>
     <script defer src="/js/profile.js"></script>
     <script defer src="/js/imageCarousel.js"></script>
+    <script defer src="/js/theme.js"></script>
 </head>
-<body class="bg-[#E8DCC5]">
+<body class="bg-[#E8DCC5] dark:bg-[#29251F] transition-colors duration-200">
     <div class="flex min-h-screen">
-        <aside id="sidebar" class="w-56 bg-[#D6C3A5] rounded-r-xl sidebar collapsed">
+        <aside id="sidebar" class="w-56 bg-[#D6C3A5] dark:bg-[#383128] rounded-r-xl sidebar collapsed transition-colors duration-200">
             <div class="flex flex-row mb-1 ps-2 p-2">
-                <button id="sidebar-button" class="w-10 h-10 shrink-0 text-[#6B513B] flex justify-center items-center cursor-pointer rounded-md hover:bg-[#B89B72]">
+                <button id="sidebar-button" class="w-10 h-10 shrink-0 text-[#6B513B] dark:text-[#E8DCC5] flex justify-center items-center cursor-pointer rounded-md hover:bg-[#B89B72] dark:hover:bg-[#494033]">
                     <i id="sidebar-icon" data-lucide="panel-left-open"></i>
                 </button>
-                <p class="ms-2 mt-1 sidebar-title text-xl text-[#6B513B]">Danm Notes</p>
+                <p class="ms-2 mt-1 sidebar-title text-xl text-[#6B513B] dark:text-[#E8DCC5]">Danm Notes</p>
             </div>
 
             <nav class="flex flex-col gap-2 items-center">
-                <button data-page="/home" class="sidebar-btn cursor-pointer">
+                <button data-page="/home" class="sidebar-btn cursor-pointer text-[#6B513B] dark:text-[#E8DCC5] hover:bg-[#B89B72] dark:hover:bg-[#494033]">
                     <i data-lucide="house" class="me-1"></i>
                     <span class="sidebar-text">Home</span>
                 </button>
-                <button data-page="/notes" class="sidebar-btn cursor-pointer">
+
+                <button data-page="/notes" class="sidebar-btn cursor-pointer text-[#6B513B] dark:text-[#E8DCC5] hover:bg-[#B89B72] dark:hover:bg-[#494033]">
                     <i data-lucide="notebook-pen" class="me-1"></i>
                     <span class="sidebar-text">Notes</span>
                 </button>
-                <button data-page="/profile" class="sidebar-btn cursor-pointer">
+
+                <button data-page="/profile" class="sidebar-btn cursor-pointer text-[#6B513B] dark:text-[#E8DCC5] hover:bg-[#B89B72] dark:hover:bg-[#494033]">
                     <i data-lucide="user" class="me-1"></i>
                     <span class="sidebar-text">Profile</span>
                 </button>
-                <button data-page="/requirements" class="sidebar-btn cursor-pointer">
-                    <i data-lucide="user" class="me-1"></i>
+
+                <button data-page="/requirements" class="sidebar-btn cursor-pointer text-[#6B513B] dark:text-[#E8DCC5] hover:bg-[#B89B72] dark:hover:bg-[#494033]">
+                    <i data-lucide="clipboard-list" class="me-1"></i>
                     <span class="sidebar-text">Requirements</span>
+                </button>
+
+                <button type="button" id="theme-toggle" class="sidebar-btn flex items-center gap-2 cursor-pointer float-bottom text-[#6B513B] dark:text-[#E8DCC5] hover:bg-[#B89B72] dark:hover:bg-[#494033]">
+                    <i data-lucide="moon" id="theme-icon"></i>
+                    <span id="theme-text">Dark Mode</span>
                 </button>
             </nav>
         </aside>
 
-        <main id="main-content" class="flex-1 p-3">
+        <main id="main-content" class="flex-1 min-w-0 p-3 text-[#6B513B] dark:text-[#E8DCC5]">
         </main>
     </div>
 </body>

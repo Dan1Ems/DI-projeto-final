@@ -1,5 +1,5 @@
 const mainContent = document.querySelector("#main-content");
-const sidebarButtons = document.querySelectorAll(".sidebar-btn");
+const sidebarButtons = document.querySelectorAll(".sidebar-btn:not(#theme-toggle)");
 
 async function loadPage(url, noteId = null) {
     try {

@@ -1,5 +1,11 @@
+@import "tailwindcss";
+
 * {
     font-family: monospace, Arial;
+}
+
+html,body {
+    overflow-x: hidden;
 }
 
 .login-form {
@@ -42,6 +48,7 @@
     transition: width 200ms ease;
 }
 
+
 .sidebar.collapsed {
     width: 56px;
 }
@@ -58,6 +65,10 @@
 .sidebar.collapsed .sidebar-title {
     opacity: 0;
     pointer-events: none;
+}
+
+.dark .sidebar-btn {
+    color: #E8DCC5;
 }
 
 .note-btn-create,
@@ -93,4 +104,9 @@
 
 .note-btn-update:hover {
     background-color: #71869A;
+}
+
+.dark .note-btn-delete,
+.dark .note-btn-update {
+    color: #E8DCC5;
 }

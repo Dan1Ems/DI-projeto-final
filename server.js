@@ -39,8 +39,8 @@ app.use("/api/notes", notesApiRoutes);
 app.use("/api/profile", profileApiRoutes);
 app.use("/requirements", requirementsRoutes);
 
-app.use("/", () => {
-    redirect("/auth/login");
+app.use("/", (req, res) => {
+    res.redirect("/auth/login");
 });
 
 app.listen(PORT, () => {

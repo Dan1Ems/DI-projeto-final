@@ -1,101 +1,79 @@
 <section>
-    <div class="flex items-center justify-between mb-6 mx-2">
-
-        <h2 class="text-4xl text-[#6B513B] font-bold">
+    <div class="flex flex-col gap-4 mb-6 mx-2 sm:flex-row sm:items-center sm:justify-between">
+        <h2 class="text-3xl text-[#6B513B] dark:text-[#E8DCC5] font-bold sm:text-4xl">
             My Notes
         </h2>
 
-        <button type="button" id="create-note-btn" class="cursor-pointer flex items-center gap-2 px-4 py-2 rounded-md bg-[#526B45] text-[#E8DCC5] hover:bg-[#657A50] transition-colors duration-200">
+        <button type="button" id="create-note-btn" class="cursor-pointer flex items-center justify-center gap-2 px-4 py-2 rounded-md bg-[#526B45] dark:bg-[#788B63] text-[#E8DCC5] hover:bg-[#657A50] dark:hover:bg-[#91A17A] transition-colors duration-200 w-full sm:w-auto">
             <i data-lucide="plus"></i>
             <span>CREATE NOTE</span>
         </button>
     </div>
+
     <template id="note-template">
-        <div class="note-card m-2 p-4 cursor-pointer border border-[#B89B72] hover:bg-[#B89B72] transition-colors duration-200 rounded-md flex items-center gap-2">
-            <button type="button" class="note-title flex flex-row gap-2 w-full h-full cursor-pointer">
-                <i data-lucide="notebook" class="text-[#6B513B]"></i>
-                <span class="note-title-text text-[#6B513B]"></span>
+        <div class="note-card m-2 p-3 sm:p-4 cursor-pointer border border-[#B89B72] dark:border-[#78664F] bg-[#E8DCC5] dark:bg-[#383128] hover:bg-[#B89B72] dark:hover:bg-[#494033] transition-colors duration-200 rounded-md flex flex-wrap sm:flex-nowrap items-center gap-2">
+            <button type="button" class="note-title flex items-center gap-2 flex-1 min-w-0 cursor-pointer">
+                <i data-lucide="notebook" class="text-[#6B513B] dark:text-[#E8DCC5] shrink-0"></i>
+                <span class="note-title-text text-[#6B513B] dark:text-[#E8DCC5] truncate"></span>
             </button>
 
-            <button type="button" class="note-btn-update">
-                <span>UPDATE</span>
-            </button>
+            <div class="flex gap-2 w-full sm:w-auto">
+                <button type="button" class="note-btn-update flex-1 sm:flex-none">
+                    <span>UPDATE</span>
+                </button>
 
-            <button type="button" class="note-btn-delete">
-                <span>DELETE</span>
-            </button>
+                <button type="button" class="note-btn-delete flex-1 sm:flex-none">
+                    <span>DELETE</span>
+                </button>
+            </div>
         </div>
     </template>
 
     <div id="notes-container"></div>
 
-    <div id="edit-note-modal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center">
-        <form id="edit-note-form" class="bg-[#E8DCC5] p-6 rounded-md w-11/12 max-w-lg">
-            <h2 class="text-2xl font-bold text-[#6B513B] mb-4">Edit Note</h2>
+    <div id="edit-note-modal" class="hidden fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4 overflow-y-auto">
+        <form id="edit-note-form" class="bg-[#E8DCC5] dark:bg-[#383128] p-4 sm:p-6 rounded-md w-full max-w-lg max-h-[90vh] overflow-y-auto">
+            <h2 class="text-2xl font-bold text-[#6B513B] dark:text-[#E8DCC5] mb-4">Edit Note</h2>
 
             <input type="hidden" id="edit-note-id">
 
-            <label for="edit-note-title">Title</label>
-            <input id="edit-note-title" type="text" required
-                class="w-full p-2 mb-4 rounded border border-[#6B513B]">
+            <label for="edit-note-title" class="text-[#6B513B] dark:text-[#E8DCC5]">Title</label>
+            <input id="edit-note-title" type="text" required class="w-full p-2 mb-4 rounded border border-[#6B513B] dark:border-[#78664F] bg-white dark:bg-[#29251F] text-[#6B513B] dark:text-[#E8DCC5]">
 
-            <label for="edit-note-text">Content</label>
-            <textarea id="edit-note-text" required
-                class="w-full p-2 mb-4 rounded border border-[#6B513B]"></textarea>
+            <label for="edit-note-text" class="text-[#6B513B] dark:text-[#E8DCC5]">Content</label>
+            <textarea id="edit-note-text" required class="w-full p-2 mb-4 rounded border border-[#6B513B] dark:border-[#78664F] bg-white dark:bg-[#29251F] text-[#6B513B] dark:text-[#E8DCC5]"></textarea>
 
-            <div class="flex justify-end gap-2">
-                <button type="button" id="cancel-edit"
-                    class="px-4 py-2 rounded border border-[#6B513B]">
+            <div class="flex flex-wrap justify-end gap-2">
+                <button type="button" id="cancel-edit" class="px-4 py-2 rounded border border-[#6B513B] dark:border-[#78664F] text-[#6B513B] dark:text-[#E8DCC5] hover:bg-[#D6C3A5] dark:hover:bg-[#494033]">
                     CANCEL
                 </button>
 
-                <button type="submit"
-                    class="px-4 py-2 rounded bg-[#6B513B] text-[#E8DCC5]">
+                <button type="submit" class="px-4 py-2 rounded bg-[#6B513B] dark:bg-[#788B63] text-[#E8DCC5] hover:bg-[#4A3829] dark:hover:bg-[#91A17A]">
                     SAVE
                 </button>
             </div>
         </form>
     </div>
-    <div id="create-note-modal"
-    class="hidden fixed inset-0 bg-black/50 flex items-center justify-center">
 
-    <form id="create-note-form"
-        class="bg-[#E8DCC5] p-6 rounded-md w-11/12 max-w-lg">
+    <div id="create-note-modal" class="hidden fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4 overflow-y-auto">
+        <form id="create-note-form" class="bg-[#E8DCC5] dark:bg-[#383128] p-4 sm:p-6 rounded-md w-full max-w-lg max-h-[90vh] overflow-y-auto">
+            <h2 class="text-2xl font-bold text-[#6B513B] dark:text-[#E8DCC5] mb-4">Create Note</h2>
 
-        <h2 class="text-2xl font-bold text-[#6B513B] mb-4">
-            Create Note
-        </h2>
+            <label for="create-note-title" class="text-[#6B513B] dark:text-[#E8DCC5]">Title</label>
+            <input id="create-note-title" type="text" required class="w-full p-2 mb-4 rounded border border-[#6B513B] dark:border-[#78664F] bg-white dark:bg-[#29251F] text-[#6B513B] dark:text-[#E8DCC5]">
 
-        <label for="create-note-title">Title</label>
-        <input
-            id="create-note-title"
-            type="text"
-            required
-            class="w-full p-2 mb-4 rounded border border-[#6B513B]"
-        >
+            <label for="create-note-text" class="text-[#6B513B] dark:text-[#E8DCC5]">Content</label>
+            <textarea id="create-note-text" required class="w-full p-2 mb-4 rounded border border-[#6B513B] dark:border-[#78664F] bg-white dark:bg-[#29251F] text-[#6B513B] dark:text-[#E8DCC5]"></textarea>
 
-        <label for="create-note-text">Content</label>
-        <textarea
-            id="create-note-text"
-            required
-            class="w-full p-2 mb-4 rounded border border-[#6B513B]"
-        ></textarea>
+            <div class="flex flex-wrap justify-end gap-2">
+                <button type="button" id="cancel-create" class="px-4 py-2 rounded border border-[#6B513B] dark:border-[#78664F] text-[#6B513B] dark:text-[#E8DCC5] hover:bg-[#D6C3A5] dark:hover:bg-[#494033]">
+                    CANCEL
+                </button>
 
-        <div class="flex justify-end gap-2">
-            <button
-                type="button"
-                id="cancel-create"
-                class="px-4 py-2 rounded border border-[#6B513B]"
-            >
-                CANCEL
-            </button>
-
-            <button
-                type="submit"
-                class="px-4 py-2 rounded bg-[#526B45] text-[#E8DCC5]"
-            >
-                CREATE
-            </button>
-        </div>
-    </form>
+                <button type="submit" class="px-4 py-2 rounded bg-[#526B45] dark:bg-[#788B63] text-[#E8DCC5] hover:bg-[#657A50] dark:hover:bg-[#91A17A]">
+                    CREATE
+                </button>
+            </div>
+        </form>
+    </div>
 </section>
