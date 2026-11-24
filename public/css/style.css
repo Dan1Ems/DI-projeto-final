@@ -24,6 +24,16 @@ html,body {
     }
 }
 
+#sidebar-btn {
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    transform: translateX(0);
+    z-index: 10;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
 .sidebar-btn {
     width: 12.5rem;
     color: #6B513B;
@@ -45,12 +55,16 @@ html,body {
 
 .sidebar {
     width: 14rem;
+    flex-shrink: 0;
     transition: width 200ms ease;
+    overflow: hidden;
+    position: relative;
 }
 
 
 .sidebar.collapsed {
-    width: 56px;
+    width: 0;
+    overflow: visible;
 }
 
 .sidebar-text,
@@ -65,6 +79,11 @@ html,body {
 .sidebar.collapsed .sidebar-title {
     opacity: 0;
     pointer-events: none;
+    white-space: nowrap;
+}
+
+.sidebar:not(.collapsed) #sidebar-button {
+    position: static;
 }
 
 .dark .sidebar-btn {

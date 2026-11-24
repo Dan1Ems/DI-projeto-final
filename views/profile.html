@@ -1,19 +1,21 @@
-<section>
+<section class="w-full min-w-0">
     <div class="flex flex-row items-center text-[#6B513B] dark:text-[#E8DCC5] gap-2 mb-6">
         <i data-lucide="user"></i>
         <h3 id="profileUsername"></h3>
     </div>
 
-    <h2 class="text-3xl sm:text-4xl text-[#6B513B] dark:text-[#E8DCC5] font-bold mb-6">History</h2>
+    <h2 class="text-3xl sm:text-4xl text-[#6B513B] dark:text-[#E8DCC5] font-bold mb-6">
+        History
+    </h2>
 
     <template id="note-template">
-        <div class="note-card m-2 p-4 cursor-pointer border border-[#B89B72] dark:border-[#78664F] bg-[#E8DCC5] dark:bg-[#383128] hover:bg-[#B89B72] dark:hover:bg-[#494033] transition-colors duration-200 rounded-md flex items-center gap-2">
-            <button type="button" class="note-title flex flex-row gap-2 w-full h-full cursor-pointer">
+        <div class="note-card w-full mb-2 box-border p-4 cursor-pointer border border-[#B89B72] dark:border-[#78664F] bg-[#E8DCC5] dark:bg-[#383128] hover:bg-[#B89B72] dark:hover:bg-[#494033] transition-colors duration-200 rounded-md flex items-center gap-2">
+            <button type="button" class="note-title w-full h-full flex flex-row gap-2 cursor-pointer">
                 <i data-lucide="notebook" class="text-[#6B513B] dark:text-[#E8DCC5]"></i>
                 <span class="note-title-text text-[#6B513B] dark:text-[#E8DCC5]"></span>
             </button>
         </div>
     </template>
 
-    <div id="notes-container"></div>
+    <div id="notes-container" class="w-full flex flex-col gap-2"></div>
 </section>
