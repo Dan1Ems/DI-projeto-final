@@ -120,10 +120,6 @@ function initializeEditForm() {
     });
 }
 
-function deleteNote() {
-
-}
-
 function initializeCreateForm() {
     const createButton = document.querySelector("#create-note-btn");
     const createModal = document.querySelector("#create-note-modal");

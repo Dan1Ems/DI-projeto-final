@@ -16,6 +16,7 @@ async function loadPage(url, noteId = null) {
             await loadNote(noteId);
         } else if (url === "/home") {
             await loadNotes("/api/notes/others");
+            initCarousel();
         } else if (url === "/notes") {
             initializeCreateForm();
             initializeEditForm();
@@ -23,8 +24,6 @@ async function loadPage(url, noteId = null) {
         } else if (url === "/profile") {
             await loadNotes("/api/notes/mynotes");
             await loadProfile();
-        } else if (url === "/requirements") {
-            showImages();
         }
 
     } catch (error) {

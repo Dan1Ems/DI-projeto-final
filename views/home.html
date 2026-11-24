@@ -1,4 +1,21 @@
 <section>
+    <div class="mb-6">
+        <h2 class="ext-3xl sm:text-4xl text-[#6B513B] dark:text-[#E8DCC5] font-bold mb-6">Welcome!</h2>
+        <p class="text-[#6B513B] dark:text-[#E8DCC5]">Welcome to Danm Notes! Here you can share histories, think, write and share!. Not too complicated, simple and efficient! <b>Keep in my that every note you create it's visible to others.</b></p>
+    </div>
+
+    <div name="carousel-container" class="w-full h-200 overflow-hidden relative max-sm:hidden mb-6 rounded-md">
+        <div id="carousel-images" class="flex transition-transform duration-500 ease-in-out w-full h-full"></div>
+
+        <button id="prev" class="absolute left-2 top-1/2 -translate-y-1/2 z-10 cursor-pointer">
+            <i data-lucide="ChevronLeft" class="w-10 h-10"></i>
+        </button>
+        
+        <button id="next" class="absolute right-2 top-1/2 -translate-y-1/2 z-10 cursor-pointer">
+            <i data-lucide="ChevronRight" class="w-10 h-10"></i>
+        </button>
+    </div>
+
     <h2 class="text-3xl sm:text-4xl text-[#6B513B] dark:text-[#E8DCC5] font-bold mb-6">Other Notes</h2>
 
     <template id="note-template">

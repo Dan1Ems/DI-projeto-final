@@ -19,7 +19,7 @@
     <script defer src="/js/notes.js"></script>
     <script defer src="/js/note.js"></script>
     <script defer src="/js/profile.js"></script>
-    <script defer src="/js/imageCarousel.js"></script>
+    <script defer src="/js/carousel.js"></script>
     <script defer src="/js/theme.js"></script>
 </head>
 <body class="bg-[#E8DCC5] dark:bg-[#29251F] transition-colors duration-200">
@@ -48,20 +48,14 @@
                     <span class="sidebar-text">Profile</span>
                 </button>
 
-                <button data-page="/requirements" class="sidebar-btn cursor-pointer text-[#6B513B] dark:text-[#E8DCC5] hover:bg-[#B89B72] dark:hover:bg-[#494033]">
-                    <i data-lucide="clipboard-list" class="me-1"></i>
-                    <span class="sidebar-text">Requirements</span>
-                </button>
-
                 <button type="button" id="theme-toggle" class="sidebar-btn flex items-center gap-2 cursor-pointer float-bottom text-[#6B513B] dark:text-[#E8DCC5] hover:bg-[#B89B72] dark:hover:bg-[#494033]">
                     <i data-lucide="moon" id="theme-icon"></i>
                     <span id="theme-text">Dark Mode</span>
                 </button>
             </nav>
         </aside>
-
-        <main id="main-content" class="flex-1 min-w-0 p-3 text-[#6B513B] dark:text-[#E8DCC5]">
-        </main>
+        
+        <main id="main-content" class="flex-1 min-w-0 p-3 text-[#6B513B] dark:text-[#E8DCC5]"></main>
     </div>
 </body>
 </html>
