@@ -4,8 +4,20 @@
     font-family: monospace, Arial;
 }
 
-html,body {
+html, body {
     overflow-x: hidden;
+}
+
+i {
+    flex-shrink: inherit;
+}
+
+.textMedium {
+    font-size: 1.3rem;
+}
+
+.textLarge {
+    font-size: 1.5rem;
 }
 
 .login-form {
@@ -20,6 +32,10 @@ html,body {
 
 @media (max-height: 500px) {
     .login-form {
+        transform: none;
+    }
+
+    .register-form {
         transform: none;
     }
 }
@@ -58,7 +74,7 @@ html,body {
     width: 14rem;
     flex-shrink: 0;
     transition: width 200ms ease;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .main-content.expanded {
@@ -134,7 +150,39 @@ html,body {
     color: #E8DCC5;
 }
 
-#acessibilityContainer {
+#accessibilityContainer {
     position: absolute;
     bottom: 0;
+    left: 0.7rem;
+    width: 100%;
+}
+
+#accessibilityDropdownContent {
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    opacity: 0;
+    margin-left: 12.9rem;
+    visibility: hidden;
+    pointer-events: none;
+    transition: width 100ms ease-in-out, opacity 100ms ease-in-out, visibility 100ms ease-in-out;
+}
+
+#accessibilityDropdownContent.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    width: 12.5rem;
+}
+
+@media (max-width: 768px) { 
+    #accessibilityDropdownContent { 
+        bottom: 1.5rem; 
+        left: 0; 
+        margin-left: 0;
+    }
+
+    #accessibilityDropdownContent.show {
+        width: 12.5rem;
+    }
 }
