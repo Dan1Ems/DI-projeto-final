@@ -24,7 +24,7 @@
 </head>
 <body class="bg-[#E8DCC5] dark:bg-[#29251F] transition-colors duration-200">
     <div class="flex min-h-screen relative">
-        <aside id="sidebar" class="bg-[#D6C3A5] dark:bg-[#383128] rounded-r-xl sidebar collapsed transition-colors duration-200">
+        <aside id="sidebar" class="h-screen bg-[#D6C3A5] dark:bg-[#383128] rounded-r-xl sidebar collapsed transition-colors duration-200">
             <div class="flex flex-row mb-1 ps-2 p-2">
                 <button id="sidebar-button" class="w-10 h-10 shrink-0 text-[#6B513B] dark:text-[#E8DCC5] flex justify-center items-center cursor-pointer rounded-md hover:bg-[#B89B72] dark:hover:bg-[#494033]">
                     <i id="sidebar-icon" data-lucide="panel-left-open"></i>
@@ -32,7 +32,7 @@
                 <p class="ms-2 mt-1 sidebar-title text-xl text-[#6B513B] dark:text-[#E8DCC5]">Danm Notes</p>
             </div>
 
-            <nav class="flex flex-col gap-2 items-center">
+            <nav class="flex flex-col gap-2 items-center h-full">
                 <button data-page="/home" class="sidebar-btn cursor-pointer text-[#6B513B] dark:text-[#E8DCC5] hover:bg-[#B89B72] dark:hover:bg-[#494033]">
                     <i data-lucide="house" class="me-1"></i>
                     <span class="sidebar-text">Home</span>
@@ -48,15 +48,24 @@
                     <span class="sidebar-text">Profile</span>
                 </button>
 
-                <button type="button" id="theme-toggle" class="sidebar-btn flex items-center gap-2 cursor-pointer float-bottom text-[#6B513B] dark:text-[#E8DCC5] hover:bg-[#B89B72] dark:hover:bg-[#494033]">
-                    <i data-lucide="moon" id="theme-icon"></i>
-                    <span id="theme-text">Dark Mode</span>
-                </button>
+                <div id="acessibilityContainer" class="mb-2">
+                    <div id="acessibilityDropdown" class="mb-2">
+                        <button type="button" id="theme-toggle" class="sidebar-btn flex items-center gap-2 cursor-pointer text-[#6B513B] dark:text-[#E8DCC5] hover:bg-[#B89B72] dark:hover:bg-[#494033]">
+                            <i data-lucide="moon" id="theme-icon"></i>
+                            <span id="theme-text" class="sidebar-text">Dark Mode</span>
+                        </button>
+                    </div>
+
+                    <button data-page="/acessibility" id="acessibilityButton" class="sidebar-btn flex items-center gap-2 cursor-pointer text-[#6B513B] dark:text-[#E8DCC5] hover:bg-[#B89B72] dark:hover:bg-[#494033]">
+                        <i data-lucide="hand-helping" class="me-1"></i>
+                        <span class="sidebar-text">Acessibility</span>
+                    </button> 
+                </div>
             </nav>
         </aside>
         
         <div class="w-full px-11 lg:px-50 flex">
-            <main id="main-content" class="flex-1 min-w-0 p-3"></main>
+            <main id="main-content" class="w-full main-content min-w-0 p-3 transition-margin-left duration-200 ease-in-out"></main>
         </div>
     </div>
 </body>

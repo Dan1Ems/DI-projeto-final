@@ -1,5 +1,5 @@
-<section>
-    <div class="flex flex-col gap-4 mb-6 mx-2 sm:flex-row sm:items-center sm:justify-between">
+<section class="w-full">
+    <div class="w-full flex flex-col gap-4 mb-6 mx-2 sm:flex-row sm:items-center sm:justify-between">
         <h2 class="text-3xl text-[#6B513B] dark:text-[#E8DCC5] font-bold sm:text-4xl">
             My Notes
         </h2>
@@ -11,7 +11,7 @@
     </div>
 
     <template id="note-template">
-        <div class="note-card m-2 p-3 sm:p-4 cursor-pointer border border-[#B89B72] dark:border-[#78664F] bg-[#E8DCC5] dark:bg-[#383128] hover:bg-[#B89B72] dark:hover:bg-[#494033] transition-colors duration-200 rounded-md flex flex-wrap sm:flex-nowrap items-center gap-2">
+        <div class="note-card w-full m-2 p-3 sm:p-4 cursor-pointer border border-[#B89B72] dark:border-[#78664F] bg-[#E8DCC5] dark:bg-[#383128] hover:bg-[#B89B72] dark:hover:bg-[#494033] transition-colors duration-200 rounded-md flex flex-wrap sm:flex-nowrap items-center gap-2">
             <button type="button" class="note-title flex items-center gap-2 flex-1 min-w-0 cursor-pointer">
                 <i data-lucide="notebook" class="text-[#6B513B] dark:text-[#E8DCC5] shrink-0"></i>
                 <span class="note-title-text text-[#6B513B] dark:text-[#E8DCC5] truncate"></span>
@@ -29,7 +29,7 @@
         </div>
     </template>
 
-    <div id="notes-container"></div>
+    <div id="notes-container" class="w-full"></div>
 
     <div id="edit-note-modal" class="hidden fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4 overflow-y-auto">
         <form id="edit-note-form" class="bg-[#E8DCC5] dark:bg-[#383128] p-4 sm:p-6 rounded-md w-full max-w-lg max-h-[90vh] overflow-y-auto">

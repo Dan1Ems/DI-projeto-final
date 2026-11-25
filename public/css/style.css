@@ -54,11 +54,15 @@ html,body {
 }
 
 .sidebar {
+    position: fixed;
     width: 14rem;
     flex-shrink: 0;
     transition: width 200ms ease;
     overflow: hidden;
-    position: relative;
+}
+
+.main-content.expanded {
+    margin-left: 14rem;
 }
 
 
@@ -128,4 +132,9 @@ html,body {
 .dark .note-btn-delete,
 .dark .note-btn-update {
     color: #E8DCC5;
+}
+
+#acessibilityContainer {
+    position: absolute;
+    bottom: 0;
 }
