@@ -43,20 +43,28 @@
                     <i data-lucide="notebook-pen" class="me-1"></i>
                     <span class="sidebar-text">Notes</span>
                 </button>
-
+                
                 <button data-page="/profile" class="sidebar-btn cursor-pointer text-[#6B513B] dark:text-[#E8DCC5] hover:bg-[#B89B72] dark:hover:bg-[#494033]">
                     <i data-lucide="user" class="me-1"></i>
                     <span class="sidebar-text">Profile</span>
                 </button>
             </nav>
-            <div id="accessibilityContainer">
+            
+            <div id="accessibilityContainer" class="gap-2">
+                <form action="/auth/logout" method="POST">
+                    <button id="logoutButton" type="submit" class="sidebar-btn mb-2 cursor-pointer text-[#6B513B] dark:text-[#E8DCC5] hover:bg-[#B89B72] dark:hover:bg-[#494033]">
+                        <i data-lucide="square-arrow-left-exit" class="me-1"></i>
+                        <span class="sidebar-text">Log Out</span>
+                    </button>
+                </form>
+
                 <div id="accessibilityDropdownContent" class="rounded-xl mb-7 bg-[#D6C3A5] dark:bg-[#383128]">
                     <button type="button" id="textAdjustButton" class="sidebar-btn flex items-center gap-2 cursor-pointer text-[#6B513B] dark:text-[#E8DCC5] hover:bg-[#B89B72] dark:hover:bg-[#494033]">
-                        <i data-lucide="a-large-small"></i>
+                        <i data-lucide="a-large-small" class="me-1"></i>
                         <span class="sidebar-text">Text Adjust</span>
                     </button>
                     <button type="button" id="theme-toggle" class="sidebar-btn flex items-center gap-2 cursor-pointer text-[#6B513B] dark:text-[#E8DCC5] hover:bg-[#B89B72] dark:hover:bg-[#494033]">
-                        <i data-lucide="moon" id="theme-icon"></i>
+                        <i data-lucide="moon" id="theme-icon" class="me-1"></i>
                         <span id="theme-text" class="sidebar-text">Dark Mode</span>
                     </button>
                 </div>
